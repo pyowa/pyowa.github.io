@@ -1,9 +1,72 @@
 <!doctype html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css" />
   <link rel="stylesheet" href="/static/css/syntax.css" />
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css" />
 </head>
 <body>
- {{ content }}
+  <div class="container">
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand dark-green hidden-desktop" href="#">Pyowa</a>
+
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <div class="nav-collapse collapse">
+
+            <ul class="nav">
+              <li><a href="https://groups.google.com/forum/#!forum/pyowa">Google Group</a></li>
+              <li><a href="https://twitter.com/pyowa">Twitter</a></li>
+              <li><a href="http://www.youtube.com/user/iowapython">Youtube</a></li>
+              <li><a href="/meetings">Past Meetings</a></li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sponsors <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.imtapps.com/">The IMT Group</a></li>
+                  <li><a href="http://www.webfilings.com/">Webfilings</a></li>
+                  <li><a href="http://www.sourceallies.com/">Source Allies</a></li>
+                  <li><a href="http://oreilly.com/">O'Reilly</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="hero-unit visible-desktop pyowa-hero-unit">
+      <div class="row">
+        <div class="span7">
+          <h1><a href="/" class="dark-green">Pyowa</a></h1>
+          <h3 class="light-green">The Iowa Python Users Group</h3>
+        </div>
+        <div class="span2">
+          <img src="/static/img/logo.jpg" class="pull-right" />
+        </div>
+      </div>
+    </div>
+
+    {{ content }}
+
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{% assign post = site.posts.first %}
+
+<div class="row">
+
+  <div class="span4">
+    <h2 class="dark-green">Next Meeting</h2>
+    <dl>
+      <dt class="dark-green">When:</dt>
+      <dd>Tuesday, {{ post.date | date: "%B %d, %Y" }}</dd>
+      <dt class="dark-green">Where:</dt>
+      <dd>{{ post.location }} (<a href="{{ post.map }}">map</a>)</dd>
+    </dl>
+  </div>
+
+  <div class="span8">
+    <div id="post">
+      {{ post.content }}
+    </div>
+  </div>
+
+</div>

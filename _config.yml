@@ -1,6 +1,1 @@
-auto: true
-server: true
-markdown: redcarpet
 pygments: true
-exclude: Gemfile Gemfile.lock
-paginate: 2
