@@ -9,13 +9,17 @@ layout: default
   <div class="span4">
     <h2 class="dark-green">Next Meeting</h2>
     <dl>
-      <dt class="dark-green">When:</dt>
-      <dd>{{ post.date | date: "%A, %B %d, %Y" }}</dd>
-      <dd>6pm - 8pm</dd>
-      <dt class="dark-green">Where:</dt>
-      <dd><strong>{{ post.location }}</strong> (<a href="{{ post.map }}">map</a>)</dd>
-      <dd>{{ post.address1 }} </dd>
-      <dd>{{ post.address2 }} </dd>
+      {% unless post.nomeeting %}
+        <dt class="dark-green">When:</dt>
+        <dd>{{ post.date | date: "%A, %B %d, %Y" }}</dd>
+        <dd>6pm - 8pm</dd>
+      {% endunless %}
+      {% if post.location %}
+        <dt class="dark-green">Where:</dt>
+        <dd><strong>{{ post.location }}</strong> (<a href="{{ post.map }}">map</a>)</dd>
+        <dd>{{ post.address1 }} </dd>
+        <dd>{{ post.address2 }} </dd>
+      {% endif %}
     </dl>
   </div>
 

@@ -5,6 +5,6 @@ layout: default
 <dl class="past-meetings">
 {% for meeting in site.posts %}
   <dt>{{ meeting.date | date: "%B %Y" }}</dt>
-  <dd><strong>{{ meeting.topic }}</strong> - {{ meeting.speaker }}</dd>
+  <dd><strong>{{ meeting.topic }}</strong>{% unless meeting.nomeeting %} - {{ meeting.speaker }} {% endunless %}</dd>
 {% endfor %}
 </dl>
