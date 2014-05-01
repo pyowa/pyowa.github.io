@@ -20,6 +20,10 @@ layout: default
         <dd>{{ post.address1 }} </dd>
         <dd>{{ post.address2 }} </dd>
       {% endif %}
+      {% if post.speaker %}
+        <dt class="dark-green">Speaker:</dt>
+        <dd>{{ post.speaker }}</dd>
+      {% endif %}
     </dl>
   </div>
 
