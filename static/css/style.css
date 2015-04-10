@@ -16,3 +16,7 @@
 }
 
 .past-meetings dt { color: #595 !important; }
+
+.jobs {
+    list-style-type: none;
+}
