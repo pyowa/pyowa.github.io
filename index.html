@@ -12,7 +12,7 @@ layout: default
       {% unless post.nomeeting %}
         <dt class="dark-green">When:</dt>
         <dd>{{ post.date | date: "%A, %B %d, %Y" }}</dd>
-        <dd>6pm - 8pm</dd>
+        <dd>7pm - 8pm</dd>
       {% endunless %}
       {% if post.location %}
         <dt class="dark-green">Where:</dt>
@@ -23,6 +23,10 @@ layout: default
       {% if post.speaker %}
         <dt class="dark-green">Speaker:</dt>
         <dd>{{ post.speaker }}</dd>
+      {% endif %}
+      {% if post.sponsor %}
+        <dt class="dark-green">Sponsor:</dt>
+        <dd><a href="{{ post.sponsor.link }}">{{ post.sponsor.name }}</a></dd>
       {% endif %}
     </dl>
   </div>
