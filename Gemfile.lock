@@ -26,7 +26,6 @@ GEM
     pygments.rb (0.5.2)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
-    rdiscount (2.1.7)
     safe_yaml (0.7.1)
     yajl-ruby (1.1.0)
 
@@ -35,4 +34,4 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 1.0.0)
-  rdiscount
+  kramdown
