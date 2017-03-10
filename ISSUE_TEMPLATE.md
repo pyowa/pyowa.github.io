@@ -1,15 +1,15 @@
-For new meetings collect the following information
+For new meetings provide the following information
 
 * Speaker
-  - [ ] Speaker Name & brief bio
+  - [ ] Name & brief bio
   - [ ] Topic & brief description
 * Food/Drink Sponsor
-  - [ ] Website
+  - [ ] Link to website
   - [ ] Any info they would like included
 * Location Sponsor
-  - [ ] Website
+  - [ ] Link to website
   - [ ] Any info they would like included
-  - [ ] URL to map
+  - [ ] URL to a map
   - [ ] Parking instructions
   - [ ] Building entering instructions
   - [ ] How to get the the room
