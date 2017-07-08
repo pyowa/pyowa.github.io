@@ -28,6 +28,12 @@ layout: default
         <dt class="dark-green">Sponsor:</dt>
         <dd><a href="{{ post.sponsor.link }}">{{ post.sponsor.name }}</a></dd>
       {% endif %}
+      {% if post.sponsors %}
+        {% for sponsor in post.sponsors %}
+          <dt class="dark-green">Sponsor:</dt>
+          <dd><a href="{{ sponsor.link }}">{{ sponsor.name }}</a></dd>
+        {% endfor %}
+      {% endif %}
     </dl>
   </div>
 
