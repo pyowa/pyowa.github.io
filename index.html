@@ -16,7 +16,7 @@ layout: default
       {% endunless %}
       {% if post.location %}
         <dt class="dark-green">Where:</dt>
-        <dd><strong>{{ post.location }}</strong> (<a href="{{ post.map }}">map</a>)</dd>
+        <dd><strong>{{ post.location }}</strong> {%if post.map %}(<a href="{{ post.map }}">map</a>){% endif %}</dd>
         <dd>{{ post.address1 }} </dd>
         <dd>{{ post.address2 }} </dd>
       {% endif %}
