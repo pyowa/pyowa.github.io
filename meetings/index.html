@@ -3,8 +3,24 @@ layout: default
 ---
 
 <dl class="past-meetings">
+<input type="text" id="search-input" placeholder="Search past meetings..">
+<ul id="results-container"></ul>
+
 {% for meeting in site.posts %}
   <dt><a href="{{ meeting.url }}">{{ meeting.date | date: "%B %Y" }}</a></dt>
   <dd><strong>{{ meeting.topic }}</strong>{% unless meeting.nomeeting %} - {{ meeting.speaker }} {% endunless %}</dd>
 {% endfor %}
 </dl>
+
+<script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+<script type="text/javascript">
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '/search.json',
+    noResultsText: 'Sorry, no meetings with that criteria',
+    searchResultTemplate: '<li class="list-group list-group-flush"><a class="list-group-item" href="{url}">{title} - {speaker}</a></li
+    fuzzy: true,
+    success: function(){},
+  })
+</script>
