@@ -1,4 +1,5 @@
 markdown: kramdown
 future: true
+repository: pyowa/pyowa.github.io
 gems:
   - jekyll-feed
