@@ -1,46 +1,10 @@
 ---
-layout: default
+layout: new
 ---
-{% assign post = site.posts.first %}
-
 
 <div class="row">
 
   <div class="span4">
-    <h2 class="dark-green">Next Meeting</h2>
-    <dl>
-      {% unless post.nomeeting %}
-        <dt class="dark-green">When:</dt>
-        <dd>{{ post.date | date: "%A, %B %d, %Y" }}</dd>
-        <dd>{{ post.time }}</dd>
-      {% endunless %}
-      {% if post.location %}
-        <dt class="dark-green">Where:</dt>
-        <dd><strong>{{ post.location }}</strong> {%if post.map %}(<a href="{{ post.map }}">map</a>){% endif %}</dd>
-        <dd>{{ post.address1 }} </dd>
-        <dd>{{ post.address2 }} </dd>
-      {% endif %}
-      {% if post.speaker %}
-        <dt class="dark-green">Speaker:</dt>
-        <dd>{{ post.speaker }}</dd>
-      {% endif %}
-      {% if post.sponsor %}
-        <dt class="dark-green">Sponsor:</dt>
-        <dd><a href="{{ post.sponsor.link }}">{{ post.sponsor.name }}</a></dd>
-      {% endif %}
-      {% if post.sponsors %}
-        {% for sponsor in post.sponsors %}
-          <dt class="dark-green">Sponsor:</dt>
-          <dd><a href="{{ sponsor.link }}">{{ sponsor.name }}</a></dd>
-        {% endfor %}
-      {% endif %}
-    </dl>
-  </div>
-
-  <div class="span8">
-    <div id="post">
-      {{ post.content }}
-    </div>
   </div>
 
 </div>
