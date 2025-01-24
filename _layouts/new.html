@@ -6,7 +6,7 @@
   display: grid;
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .wrapper a {
   text-align: center;
@@ -14,27 +14,32 @@
   background-size: contain;
 }
 .logo {
-  grid-column: span 2;
+  grid-column: span 6;
   grid-row: 1;
   text-align: center;
 }
 .meetup {
-  grid-column: 1;
+  grid-column: span 2;
   grid-row: 2;
   background: url('/static/img/meetup.png') no-repeat;
 }
 .linkedin {
-  grid-column: 2;
+  grid-column: span 2;
   grid-row: 2;
   background: url('/static/img/linkedin.svg') no-repeat;
 }
+.youtube {
+  grid-column: span 2;
+  grid-row: 2;
+  background: url('/static/img/youtube.jpg') no-repeat;
+}
 .bluesky {
-  grid-column: 1;
+  grid-column: span 3;
   grid-row: 3;
   background: url('/static/img/bluesky.jpg') no-repeat;
 }
 .discord {
-  grid-column: 2;
+  grid-column: span 3;
   grid-row: 3;
   background: url('/static/img/discord.svg') no-repeat;
 }
@@ -46,6 +51,7 @@
     <div class="logo"><img src="/static/img/pyowa.png"></img></div>
     <a class="meetup" href="//www.meetup.com/pyowa-iowa-python-user-group"></a>
     <a class="linkedin" href="//www.linkedin.com/company/pyowa/"></a>
+    <a class="youtube" href="//www.youtube.com/@iowapython"></a>
     <a class="bluesky" href="//bsky.app/profile/pyowa.org"></a>
     <a class="discord" href="//discord.gg/KSsEVdVpGZ"></a>
   </div>
