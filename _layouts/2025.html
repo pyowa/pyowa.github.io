@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+<style type="text/css">
+:root {
+  --main-blue: #4587b3;
+  --main-light-blue: #9cc0d9;
+  --main-yellow: #ffd750;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited, a:active, a:hover {
+  color: black;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-blue);
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container .button {
+  border-radius: 50px;
+  padding: 10px;
+  margin: 80px 130px 40px 130px;
+  border: 3px solid black;
+  background-color: white;
+  font-family: "Francois One", sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  justify-content: center;
+}
+
+.button img {
+  height: 50px;
+  padding-right: 10px;
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  height: 100px;
+  background-color: var(--main-yellow);
+}
+
+.header-two {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  background-color: var(--main-light-blue);
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+.pyowa {
+  grid-row: 2;
+  grid-column: 1 / 2;
+  text-align: right;
+  img {
+    height: 18em;
+  }
+}
+
+#meeting {
+  grid-row: 2;
+  grid-column: 2 / -1;
+  font-family: "Francois One", sans-serif;
+  font-weight: 400;
+  font-size: 80px;
+  text-align: center;
+  color: white;
+  text-shadow: -2px 0 black, 0 3px black, 3px 0 black, 0 -2px black;
+  font-style: normal;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">&nbsp;</div>
+    <div class="header-two"></div>
+    <div class="pyowa"><img src="static/2025/img/pyowa.png" /></div>
+    <div id="meeting">Meeting Date</div>
+    <a class="meetup button" href="//www.meetup.com/pyowa-iowa-python-user-group">
+      <img src="/static/2025/img/meetup.png" />MeetUp
+    </a>
+    <a class="linkedin button" href="//www.linkedin.com/company/pyowa/">
+      <img src="/static/2025/img/linkedin.png" />LinkedIn
+    </a>
+    <a class="bluesky button" href="//bsky.app/profile/pyowa.org">
+      <img src="/static/2025/img/bluesky.svg" />Bluesky
+    </a>
+    <a class="discord button" href="//discord.gg/KSsEVdVpGZ">
+      <img src="/static/2025/img/discord.png" />Discord
+    </a>
+    <a class="youtube button" href="//www.youtube.com/@iowapython">
+      <img src="/static/2025/img/youtube.png" />YouTube
+    </a>
+    <a class="sessionize button" href="//sessionize.com/pyowa">
+      <img src="/static/2025/img/sessionize.png" />Sessionize
+    </a>
+  </div>
+</body>
+<script>
+  function getFourthTuesday(currentDate = new Date()) {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const dayOfWeek = firstDay.getDay();
+
+      const daysToFirstTuesday = (9 - dayOfWeek) % 7;
+      const fourthTuesday = new Date(year, month, 1 + daysToFirstTuesday + 7 * 3);
+      if (fourthTuesday.getMonth() === currentDate.getMonth() && fourthTuesday.getDate() < currentDate.getDate()) {
+        currentDate.setDate(1);
+        currentDate.setMonth(currentDate.getMonth() + 1)
+        return getFourthTuesday(currentDate);
+      }
+
+      return fourthTuesday;
+  }
+
+  const nextMeeting = getFourthTuesday().toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' });
+  document.getElementById('meeting').innerHTML = `next meeting is<br />${nextMeeting} at 5:30 pm`.toUpperCase();
+
+  function testGetFourthTuesday(year, month, day, expectedDate) {
+      const testDate = new Date(year, month - 1, day);
+      const result = getFourthTuesday(testDate);
+      const resultStr = result.toISOString().split('T')[0];
+      const passed = resultStr === expectedDate;
+      console.log(
+        `${passed ? "✅" : "❌"} Test for ${year}-${month.toString().padStart(2, '0')}-${day}: Expected ${expectedDate}, Got ${resultStr}`
+      );
+  }
+
+  // Run tests
+  testGetFourthTuesday(2023, 12, 30, "2024-01-23");
+  testGetFourthTuesday(2024, 1, 1, "2024-01-23");
+  testGetFourthTuesday(2024, 2, 1, "2024-02-27");
+  testGetFourthTuesday(2024, 3, 1, "2024-03-26");
+  testGetFourthTuesday(2024, 4, 1, "2024-04-23");
+  testGetFourthTuesday(2024, 5, 1, "2024-05-28");
+  testGetFourthTuesday(2024, 12, 31, "2025-01-28");
+  testGetFourthTuesday(2025, 5, 1, "2025-05-27");
+  testGetFourthTuesday(2025, 5, 28, "2025-06-24");
+  testGetFourthTuesday(2025, 6, 1, "2025-06-24");
+  testGetFourthTuesday(2025, 6, 24, "2025-06-24");
+  testGetFourthTuesday(2025, 6, 25, "2025-07-22");
+</script>
+</html
