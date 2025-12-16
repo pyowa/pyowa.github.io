@@ -1,6 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The Iowa Python User's Group (Pyowa) Website">
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
@@ -25,6 +28,8 @@ body {
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /*grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);*/
+  /* grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr)); */
 }
 .container .button {
   border-radius: 50px;
@@ -83,34 +88,36 @@ body {
 
 
 </style>
+<title>Pyowa - The Iowa Python Users Group</title>
 </head>
 <body>
   <div class="container">
     <div class="header">&nbsp;</div>
     <div class="header-two"></div>
-    <div class="pyowa"><img src="static/2025/img/pyowa.png" /></div>
+    <div class="pyowa"><img src="/static/2025/img/pyowa.png" alt="An image of outline of the state of Iowa containing the Python logo above the word Pyowa" title="Pyowa logo" /></div>
     <div id="meeting">Meeting Date</div>
     <a class="meetup button" href="//www.meetup.com/pyowa-iowa-python-user-group">
-      <img src="/static/2025/img/meetup.png" />MeetUp
+      <img src="/static/2025/img/meetup.png" role="presentation" />MeetUp
     </a>
     <a class="linkedin button" href="//www.linkedin.com/company/pyowa/">
-      <img src="/static/2025/img/linkedin.png" />LinkedIn
+      <img src="/static/2025/img/linkedin.png" role="presentation" />LinkedIn
     </a>
     <a class="bluesky button" href="//bsky.app/profile/pyowa.org">
-      <img src="/static/2025/img/bluesky.svg" />Bluesky
+      <img src="/static/2025/img/bluesky.svg" role="presentation" />Bluesky
     </a>
     <a class="discord button" href="//discord.gg/KSsEVdVpGZ">
-      <img src="/static/2025/img/discord.png" />Discord
+      <img src="/static/2025/img/discord.png" role="presentation" />Discord
     </a>
     <a class="youtube button" href="//www.youtube.com/@iowapython">
-      <img src="/static/2025/img/youtube.png" />YouTube
+      <img src="/static/2025/img/youtube.png" role="presentation" />YouTube
     </a>
     <a class="sessionize button" href="//sessionize.com/pyowa">
-      <img src="/static/2025/img/sessionize.png" />Sessionize
+      <img src="/static/2025/img/sessionize.png" role="presentation" />Sessionize
     </a>
   </div>
 </body>
 <script>
+  
   function getFourthTuesday(currentDate = new Date()) {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
@@ -119,6 +126,17 @@ body {
 
       const daysToFirstTuesday = (9 - dayOfWeek) % 7;
       const fourthTuesday = new Date(year, month, 1 + daysToFirstTuesday + 7 * 3);
+
+      if (fourthTuesday.getFullYear() == 2025) {
+        if (fourthTuesday.getMonth() == 11){
+          currentDate.setDate(1);
+          currentDate.setMonth(0);
+          currentDate.setYear(2026);
+          return getFourthTuesday(currentDate);
+
+        }
+      }
+
       if (fourthTuesday.getMonth() === currentDate.getMonth() && fourthTuesday.getDate() < currentDate.getDate()) {
         currentDate.setDate(1);
         currentDate.setMonth(currentDate.getMonth() + 1)
@@ -130,6 +148,49 @@ body {
 
   const nextMeeting = getFourthTuesday().toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' });
   document.getElementById('meeting').innerHTML = `next meeting is<br />${nextMeeting} at 5:30 pm`.toUpperCase();
+  
+
+  // async function getSchedule() {
+  //   const response = await fetch('https://sessionize.com/api/v2/5sys6woz/view/All');
+  //   const jsonData = await response.json();
+  //   return jsonData;
+  // }
+  // getSchedule().then(data => {
+  //   const speakers = data.speakers.reduce((accumulator, currentValue) => {
+  //     accumulator[currentValue.id] = currentValue;
+  //     return accumulator;
+  //   }, {});
+  //   data.sessions.forEach(item => {
+  //     console.log(item.startsAt);
+  //     console.log(item.title);
+  //     console.log(item.description);
+  //     item.speakers.forEach(speaker => {
+  //       console.log(speakers[speaker]);
+  //     })
+  //     console.log('===============================================');
+  //   })
+  //   console.log(data);
+  // });
+
+  if(new URLSearchParams(window.location.search).get('tests') == 'true') {
+    runDateTests();
+  }
+
+  function runDateTests(){
+    testGetFourthTuesday(2023, 12, 30, "2024-01-23");
+    testGetFourthTuesday(2024, 1, 1, "2024-01-23");
+    testGetFourthTuesday(2024, 2, 1, "2024-02-27");
+    testGetFourthTuesday(2024, 3, 1, "2024-03-26");
+    testGetFourthTuesday(2024, 4, 1, "2024-04-23");
+    testGetFourthTuesday(2024, 5, 1, "2024-05-28");
+    testGetFourthTuesday(2024, 12, 31, "2025-01-28");
+    testGetFourthTuesday(2025, 5, 1, "2025-05-27");
+    testGetFourthTuesday(2025, 5, 28, "2025-06-24");
+    testGetFourthTuesday(2025, 6, 1, "2025-06-24");
+    testGetFourthTuesday(2025, 6, 24, "2025-06-24");
+    testGetFourthTuesday(2025, 6, 25, "2025-07-22");
+    testGetFourthTuesday(2025, 12, 7, "2026-01-27");
+  }
 
   function testGetFourthTuesday(year, month, day, expectedDate) {
       const testDate = new Date(year, month - 1, day);
@@ -141,18 +202,5 @@ body {
       );
   }
 
-  // Run tests
-  testGetFourthTuesday(2023, 12, 30, "2024-01-23");
-  testGetFourthTuesday(2024, 1, 1, "2024-01-23");
-  testGetFourthTuesday(2024, 2, 1, "2024-02-27");
-  testGetFourthTuesday(2024, 3, 1, "2024-03-26");
-  testGetFourthTuesday(2024, 4, 1, "2024-04-23");
-  testGetFourthTuesday(2024, 5, 1, "2024-05-28");
-  testGetFourthTuesday(2024, 12, 31, "2025-01-28");
-  testGetFourthTuesday(2025, 5, 1, "2025-05-27");
-  testGetFourthTuesday(2025, 5, 28, "2025-06-24");
-  testGetFourthTuesday(2025, 6, 1, "2025-06-24");
-  testGetFourthTuesday(2025, 6, 24, "2025-06-24");
-  testGetFourthTuesday(2025, 6, 25, "2025-07-22");
 </script>
 </html
