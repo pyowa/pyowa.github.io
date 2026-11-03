@@ -162,14 +162,15 @@ body {
       const daysToFirstTuesday = (9 - dayOfWeek) % 7;
       const fourthTuesday = new Date(year, month, 1 + daysToFirstTuesday + 7 * 3);
 
-      if (fourthTuesday.getFullYear() == 2026) {
-        if (fourthTuesday.getMonth() == 11){
-          currentDate.setDate(1);
-          currentDate.setMonth(0);
-          currentDate.setYear(2026);
-          return getFourthTuesday(currentDate);
-
-        }
+      if (currentDate.getFullYear() == 2026 && currentDate.getMonth() == 10) {
+        currentDate = new Date(2026, 11, 1);
+      }
+      if (currentDate.getFullYear() == 2026 && currentDate.getMonth() == 11) {
+        if (currentDate.getDate() <= 1) return new Date(2026, 11, 1);
+        currentDate.setDate(1);
+        currentDate.setMonth(0);
+        currentDate.setFullYear(2027);
+        return getFourthTuesday(currentDate);
       }
 
       if (fourthTuesday.getMonth() === currentDate.getMonth() && fourthTuesday.getDate() < currentDate.getDate()) {
